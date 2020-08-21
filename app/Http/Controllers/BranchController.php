@@ -17,14 +17,13 @@ class BranchController extends Controller
         $city     = $request->get('city');
 
         $branches = Branch::whereHas('bank', function($q) use ($bank) {
-		    $q->where('slug', $bank);
-		})->whereHas('state', function($q) use ($state) {
-		    $q->where('slug', $state);
-		})->whereHas('district', function($q) use ($district) {
-		    $q->where('slug', $district);
-		})->whereHas('city', function($q) use ($city) {
-            $q->where('slug', $city);
-        })->with(['bank','state','district','city'])->orderBy('branch')->get();
+            $q->where('slug', $bank);
+        })->whereStateSlug($state)
+        ->whereDistrictSlug($district)
+        ->whereCitySlug($city)
+        ->whereNotNull('branch')
+        //->select('city as name','city_slug as slug')
+        ->with('bank')->orderBy('branch')->get();
 
         return response()->json($branches);
     }

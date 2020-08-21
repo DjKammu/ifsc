@@ -15,7 +15,12 @@ if (App::environment('production', 'staging')) {
    URL::forceScheme('https');
 }
 
+Route::get('/migration', function () {
+    Artisan::call('migrate');
+    $exitCode = Artisan::call('migrate', [] );
+    echo $exitCode;
+});
 
-Route::get('/{any}', function () {
-  return view('welcome');
+Route::get('/{any}', function(){
+	return view('welcome');
 })->where('any', '.*');

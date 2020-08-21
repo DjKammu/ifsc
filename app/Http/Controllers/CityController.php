@@ -15,15 +15,15 @@ class CityController extends Controller
         $state    = $request->get('state');
         $bank     = $request->get('bank');
 
-        $citiesId = Branch::whereHas('bank', function($q) use ($bank) {
-		    $q->where('slug', $bank);
-		})->whereHas('state', function($q) use ($state) {
-		    $q->where('slug', $state);
-		})->whereHas('district', function($q) use ($district) {
-		    $q->where('slug', $district);
-		})->pluck('city_id')->unique();
+        $cities = Branch::whereHas('bank', function($q) use ($bank) {
+            $q->where('slug', $bank);
+        })->whereStateSlug($state)
+        ->whereDistrictSlug($district)
+        ->whereNotNull('city')
+        ->select('city as name','city_slug as slug')
+        ->groupBy('city')->get();
 
-        $cities = City::whereIn('id',$citiesId)->orderBy('name')->get();
+        //$cities = City::whereIn('id',$citiesId)->orderBy('name')->get();
 
         return response()->json($cities);
     }

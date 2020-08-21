@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         $table = config('admin.extensions.config.table', 'admin_config');
         if (\Schema::hasTable($table)) {
+            Config::boot();
             Config::load();
         }
     }

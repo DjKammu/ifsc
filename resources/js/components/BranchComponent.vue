@@ -53,16 +53,20 @@
                  
                   <tbody>
                     <tr>
-                      <th scope="row">State</th>
+                      <th scope="row">Bank</th>
                       <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['bank']['name'] }}</td>
                     </tr> 
                     <tr>
+                      <th scope="row">State</th>
+                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['state'] }}</td>
+                    </tr> 
+                    <tr>
                       <th scope="row">District</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['district']['name'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['district'] }}</td>
                     </tr>
                     <tr>
                       <th scope="row">City</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['city']['name'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['city'] }}</td>
                     </tr> 
                     <tr>
                       <th scope="row">Branch</th>
@@ -169,6 +173,7 @@
             .then(response => {
               this.branchOptions = response.data
                 let selectedBranch = this.selectedBranch
+                alert(selectedBranch);
                this.branchDetail =  this.branchOptions.filter(function(branch) {
                 return branch.slug == selectedBranch;
               });

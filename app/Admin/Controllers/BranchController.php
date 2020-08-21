@@ -44,17 +44,21 @@ class BranchController extends AdminController
         $grid->bank()->display(function ($bank) {
             return $bank['name'];
         });
-        $grid->state()->display(function ($state) {
-            return $state['name'];
-        });
+        // $grid->state()->display(function ($state) {
+        //     return $state['name'];
+        // });
 
-        $grid->district()->display(function ($district) {
-            return $district['name'];
-        }); 
+        // $grid->district()->display(function ($district) {
+        //     return $district['name'];
+        // }); 
         
-        $grid->city()->display(function ($city) {
-            return $city['name'];
-        });
+        // $grid->city()->display(function ($city) {
+        //     return $city['name'];
+        // });
+        
+        $grid->column('state', __('State'));
+        $grid->column('district', __('District'));
+        $grid->column('city', __('City'));
 
         $grid->column('ifsc_code', __('Ifsc code'));
         $grid->column('branch', __('Branch'));
@@ -83,17 +87,20 @@ class BranchController extends AdminController
         $show->bank_id('Bank')->as(function ($state_id) {
             return Bank::find($state_id)->name;
         });
+         
+        // $show->state_id('State')->as(function ($state_id) {
+        //     return State::find($state_id)->name;
+        // });
+        // $show->district_id('District')->as(function ($district_id) {
+        //     return District::find($district_id)->name;
+        // });
 
-        $show->state_id('State')->as(function ($state_id) {
-            return State::find($state_id)->name;
-        });
-        $show->district_id('District')->as(function ($district_id) {
-            return District::find($district_id)->name;
-        });
-
-        $show->city_id('City')->as(function ($district_id) {
-            return City::find($district_id)->name;
-        });
+        // $show->city_id('City')->as(function ($district_id) {
+        //     return City::find($district_id)->name;
+        // });
+        $show->field('state', __('State'));
+        $show->field('district', __('District'));
+        $show->field('city', __('City'));
 
         $show->field('ifsc_code', __('Ifsc code'));
         $show->field('branch', __('Branch'));
@@ -119,17 +126,29 @@ class BranchController extends AdminController
 
         $form->select('bank_id', __('Bank'))->options($banks)->rules('required');
 
-        $states = State::pluck('name','id');
-
-        $districts = District::pluck('name','id');
-
-        $cities = City::pluck('name','id');
+        $form->text('state', __('State'))->rules('required|min:3');
         
-        $form->select('state_id', __('State'))->options($states)->load('district_id', '/admin/state/districts')->rules('required');
+        $form->hidden('state_slug');
 
-        $form->select('district_id', __('District'))->options($districts)->load('city_id', '/admin/district/cities')->rules('required');
+        $form->text('district', __('District'))->rules('required|min:3');
+        
+        $form->hidden('district_slug');
 
-        $form->select('city_id', __('City'))->options($cities)->rules('required');
+        $form->text('city', __('City'))->rules('required|min:3');
+        
+        $form->hidden('city_slug');
+
+        // $states = State::pluck('name','id');
+
+        // $districts = District::pluck('name','id');
+
+        // $cities = City::pluck('name','id');
+        
+        // $form->select('state_id', __('State'))->options($states)->load('district_id', '/admin/state/districts')->rules('required');
+
+        // $form->select('district_id', __('District'))->options($districts)->load('city_id', '/admin/district/cities')->rules('required');
+
+        // $form->select('city_id', __('City'))->options($cities)->rules('required');
 
 
         $form->text('ifsc_code', __('Ifsc Code'))->required()->rules(function ($form) {
@@ -150,6 +169,24 @@ class BranchController extends AdminController
                      $form->branch);
                     empty($slug) ?? $slug = $form->branch; 
                     $form->slug = \Str::slug($slug);
+                }
+                if ($form->state_slug == null) {
+                    $state_slug = preg_replace('/(\d){1,}\.?(\d?){1,}\.?(\d?){1,}\.?(\d?){1,}/', '',
+                     $form->state);
+                    empty($state_slug) ?? $state_slug = $form->state; 
+                    $form->state_slug = \Str::slug($state_slug);
+                }
+                if ($form->district_slug == null) {
+                    $district_slug = preg_replace('/(\d){1,}\.?(\d?){1,}\.?(\d?){1,}\.?(\d?){1,}/', '',
+                     $form->district);
+                    empty($district_slug) ?? $district_slug = $form->district; 
+                    $form->district_slug = \Str::slug($district_slug);
+                }
+                if ($form->city_slug == null) {
+                    $city_slug = preg_replace('/(\d){1,}\.?(\d?){1,}\.?(\d?){1,}\.?(\d?){1,}/', '',
+                     $form->city);
+                    empty($city_slug) ?? $city_slug = $form->city; 
+                    $form->city_slug = \Str::slug($city_slug);
                 }
             }
         });
@@ -212,28 +249,34 @@ class BranchController extends AdminController
           );
           $bank_id = $bank->id;
 
-          $state = State::firstOrCreate(
-              ['name' => $state_name],
-              ['slug' =>  \Str::slug(trim($state_name), '-')]
-          );
-          $state_id = $state->id;
+          $district_slug = \Str::slug(trim($district_name), '-');
+          $state_slug = \Str::slug(trim($state_name), '-');
+          $city_slug = \Str::slug(trim($city_name), '-');
 
-          $district = District::firstOrCreate(
-              ['name' => $district_name,'state_id' => $state_id],
-              ['slug' =>  \Str::slug(trim($district_name), '-')]
-          );
-          $district_id = $district->id; 
+          // $state = State::firstOrCreate(
+          //     ['name' => $state_name],
+          //     ['slug' =>  \Str::slug(trim($state_name), '-')]
+          // );
+          // $state_id = $state->id;
 
-          $city = City::firstOrCreate(
-              ['name' => $city_name,'state_id' => $state_id,'district_id' => $district_id],
-              ['slug' =>  \Str::slug(trim($city_name), '-')]
-          );
-          $city_id = $city->id; 
+          // $district = District::firstOrCreate(
+          //     ['name' => $district_name,'state_id' => $state_id],
+          //     ['slug' =>  \Str::slug(trim($district_name), '-')]
+          // );
+          // $district_id = $district->id; 
+
+          // $city = City::firstOrCreate(
+          //     ['name' => $city_name,'state_id' => $state_id,'district_id' => $district_id],
+          //     ['slug' =>  \Str::slug(trim($city_name), '-')]
+          // );
+          // $city_id = $city->id; 
 
           Branch::firstOrCreate(
-              ['branch' => $office,'state_id' => $state_id,'district_id' => $district_id,
-              'city_id' => $city_id,'bank_id' => $bank_id],
-              ['slug' =>  $slug,'address' => $address,'phone' => $phone,'ifsc_code' => $ifsc_code,
+              ['ifsc_code' => $ifsc_code],
+              ['branch' => $office,'state' => $state_name,'district' => $district_name,
+              'city_slug' =>  $city_slug, 'address' => $address,'phone' => $phone,
+              'district_slug' => $district_slug,'state_slug' => $state_slug, 
+              'city' => $city_name,'bank_id' => $bank_id, 'slug' =>  $slug,
               'micr_code' => $micr_code,'std_code' => $std_code]
           );
 

@@ -14,13 +14,14 @@ class DistrictController extends Controller
         $bank = $request->get('bank');
         $state = $request->get('state');
 
-        $districtsId = Branch::whereHas('bank', function($q) use ($bank) {
-		    $q->where('slug', $bank);
-		})->whereHas('state', function($q) use ($state) {
-		    $q->where('slug', $state);
-		})->pluck('district_id')->unique();
-
-        $districts = District::whereIn('id',$districtsId)->orderBy('name')->get();
+        $districts = Branch::whereHas('bank', function($q) use ($bank) {
+            $q->where('slug', $bank);
+        })->whereStateSlug($state)
+        ->whereNotNull('district')
+        ->select('district as name','district_slug as slug')
+        ->groupBy('district')->get();
+        
+        //$districts = District::whereIn('id',$districtsId)->orderBy('name')->get();
 
         return response()->json($districts);
     }

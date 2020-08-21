@@ -13,11 +13,13 @@ class StateController extends Controller
     {
         $bank = $request->get('bank');
 
-        $statesId = Branch::whereHas('bank', function($q) use ($bank) {
+        $states = Branch::whereHas('bank', function($q) use ($bank) {
 		    $q->where('slug', $bank);
-		})->pluck('state_id')->unique();
-
-        $states = State::whereIn('id',$statesId)->orderBy('name')->get();
+		})->whereNotNull('state')
+		->select('state as name','state_slug as slug')
+		->groupBy('state')->get();
+		
+        //$states = State::whereIn('id',$statesId)->orderBy('name')->get();
 
         return response()->json($states);
     }
