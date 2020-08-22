@@ -14,6 +14,12 @@
         <meta name="csrf-token" value="{{ csrf_token() }}" />
         <meta name="description" content="{{ config('description') }}"/>
         <meta name="keywords" content="{{ config('keywords') }}"/>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ \Storage::url('favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ \Storage::url('favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ \Storage::url('favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ \Storage::url('favicon/site.webmanifest') }}">
+
         <script type="text/javascript">
             var BaseUrl = "{{ url('/') }}"
         </script>

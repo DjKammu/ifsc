@@ -21,6 +21,12 @@ Route::get('/migration', function () {
     echo $exitCode;
 });
 
+Route::get('/storage', function () {
+    Artisan::call('storage:link');
+    $exitCode = Artisan::call('storage:link', [] );
+    echo $exitCode;
+});
+
 Route::get('/{any}', function(){
 	return view('welcome');
 })->where('any', '.*');
