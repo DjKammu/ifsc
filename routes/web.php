@@ -27,6 +27,12 @@ Route::get('/storage', function () {
     echo $exitCode;
 });
 
+/*SITE MAP */
+Route::get('/sitemap/index.xml', 'SitemapController@index');
+Route::get('/sitemap/pages.xml', 'SitemapController@pages');
+Route::get('/sitemap/banks.xml', 'SitemapController@banks');
+
+
 Route::get('/{any}', function(){
 	return view('welcome');
 })->where('any', '.*');
