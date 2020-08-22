@@ -6,7 +6,7 @@
     <sitemap>
         <loc>{{url('sitemap/states.xml')}}</loc>
     </sitemap>
-    <sitemap>
+    <!-- <sitemap>
         <loc>{{url('sitemap/districts.xml')}}</loc>
     </sitemap>
     <sitemap>
@@ -14,7 +14,7 @@
     </sitemap>
     <sitemap>
         <loc>{{url('sitemap/branches.xml')}}</loc>
-    </sitemap>
+    </sitemap> -->
     <sitemap>
         <loc>{{url('sitemap/pages.xml')}}</loc>
     </sitemap>
