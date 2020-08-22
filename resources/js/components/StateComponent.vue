@@ -1,60 +1,74 @@
 <template>
  <div >
-  <section class="about" id="about">
-          <div class="container">
-            <div class="banner-inner">
-              <div class="col-md-8 col-md-offset-2 banner-left">
-                <form action="#" method="post">
-                <h3>Find IFSC Code of Bank</h3>
-                  <select @change="selectBank($event)" v-model="selectedBank">
-                    <option value="">Please Select Bank Name</option>
-                    <option v-for="option in bankOptions" v-bind:value="option.slug">
-                    {{ option.name }}
-                  </option>
-                  </select>
-                  <select @change="selectState($event)" v-model="selectedState">
-                    <option value="">Please State Name</option>
-                    <option v-for="option in stateOptions" v-bind:value="option.slug">
-                      {{ option.name }}
-                    </option>
-                  </select>
-                  <select @change="selectDistrict($event)" v-model="selectedDistrict">
-                    <option value="">Please District Name</option>
-                    <option v-for="option in districtOptions" v-bind:value="option.slug">
-                      {{ option.name }}
-                    </option>
-                  </select>
-                  <select >
-                    <option value="">City</option>
-                  </select>
-                  <select >
-                    <option value="">Branch</option>
-                  </select>
 
-                </form>
+    <div class="intro">
+    <div class="container">
+      <div class="row intro_row">       
+        <div class="col-lg-3">  </div>        
+        <div class="col-lg-6 intro_col">
+          <div>
+            <h2 class="mb-5 text-center">Find IFSC Code of Bank</h2> 
+              <div class="search_box_container">
+                <div class="search_form_container">
+                  <form action="#" id="search_form" class="search_form">
+                     <h3>Find IFSC Code of Bank</h3>
+
+                     <select @change="selectBank($event)" v-model="selectedBank">
+                        <option value="">Please Select Bank Name</option>
+                        <option v-for="option in bankOptions" v-bind:value="option.slug">
+                        {{ option.name }}
+                      </option>
+                      </select>
+                      <select @change="selectState($event)" v-model="selectedState">
+                        <option value="">Please State Name</option>
+                        <option v-for="option in stateOptions" v-bind:value="option.slug">
+                          {{ option.name }}
+                        </option>
+                      </select>
+                      <select @change="selectDistrict($event)" v-model="selectedDistrict">
+                        <option value="">Please District Name</option>
+                        <option v-for="option in districtOptions" v-bind:value="option.slug">
+                          {{ option.name }}
+                        </option>
+                      </select>
+                      <select >
+                        <option value="">City</option>
+                      </select>
+                      <select >
+                        <option value="">Branch</option>
+                      </select>
+                  </form>
+                </div>
               </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-
-          <div class="container">
-            <div class="about-heading">
-               <h2>District for {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2>
-            </div>
-
+          </div>          
+        </div>
+        <div class="col-lg-3">  </div>
+      </div>
+      <div>
+        <div class="row mt-5">
+          <div class="col-lg-2">  </div>        
+          <div class="col-lg-8 bank-lists">
+            <h2 class="mb-5 text-center">District for {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2> 
             <ul class="banks-ul">
-              <li v-for="option in districtOptions">
+              <li class="text-md-left text-center mt-2 mb-2" v-for="option in districtOptions">
                 <router-link 
                   :to="{ name: 'district', params: { bank : selectedBank , state: selectedState, district: option.slug }}"> {{ option.name }}
                 </router-link>
               </li>
+
             </ul>
 
-            <div class="clearfix"></div>
-
           </div>
-    
-      </section> 
+          <div class="col-lg-2">  </div>    
+          
+
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+
     </div>
 </template>
 

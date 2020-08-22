@@ -1,11 +1,16 @@
 <template>
  <div >
-  <section class="about" id="about">
-          <div class="container">
-            <div class="banner-inner">
-              <div class="col-md-8 col-md-offset-2 banner-left">
-                <h3>Find IFSC Code of Bank</h3>
-                  <select @change="selectBank($event)" v-model="selected">
+ <div class="intro">
+    <div class="container">
+      <div class="row intro_row">       
+        <div class="col-lg-3">  </div>        
+        <div class="col-lg-6 intro_col">
+          <div>
+            <h2 class="mb-5 text-center">Find IFSC Code of Bank</h2> 
+              <div class="search_box_container">
+                <div class="search_form_container">
+                  <form action="#" id="search_form" class="search_form">
+                    <select @change="selectBank($event)" v-model="selected">
                     <option value="">Please Select Bank Name</option>
                     <option v-for="option in bankOptions" v-bind:value="option.slug">
                     {{ option.name }}
@@ -23,29 +28,35 @@
                   <select >
                     <option value="">Branch</option>
                   </select>
-
+                  </form>
+                </div>
               </div>
-            </div>
-            <div class="clearfix"></div>
-
-          </div>
-          <div class="container">
-            <div class="about-heading">
-              <h2>All Banks</h2>
-            </div>
-
+          </div>          
+        </div>
+        <div class="col-lg-3">  </div>
+      </div>
+      <div>
+        <div class="row mt-5">
+          <div class="col-lg-2">  </div>        
+          <div class="col-lg-8 bank-lists">
+            <h2 class="mb-5 text-center">All Banks</h2> 
             <ul class="banks-ul">
-              <li v-for="option in bankOptions">
+              <li class="text-md-left text-center mt-2 mb-2" 
+              v-for="option in bankOptions">
                     <router-link 
                   :to="{ name: 'bank', params: { bank: option.slug }}"> {{ option.name }}
                 </router-link>
-              </li>
+              </li>                  
             </ul>
 
-            <div class="clearfix"></div>
-
           </div>
-      </section> 
+          <div class="col-lg-2">  </div>    
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
     </div>
 </template>
 

@@ -1,11 +1,18 @@
 <template>
  <div >
-  <section class="about" id="about">
-          <div class="container">
-            <div class="banner-inner">
-              <div class="col-md-8 col-md-offset-2 banner-left">
-                <form action="#" method="post">
-                <h3>Find IFSC Code of Bank</h3>
+
+   <div class="intro">
+    <div class="container">
+      <div class="row intro_row">       
+        <div class="col-lg-3">  </div>        
+        <div class="col-lg-6 intro_col">
+          <div>
+            <h2 class="mb-5 text-center">Find IFSC Code of Bank</h2> 
+              <div class="search_box_container">
+                <div class="search_form_container">
+                  <form action="#" id="search_form" class="search_form">
+                     <h3>Find IFSC Code of Bank</h3>
+
                   <select @change="selectBank($event)" v-model="selectedBank">
                     <option value="">Please Select Bank Name</option>
                     <option v-for="option in bankOptions" v-bind:value="option.slug">
@@ -36,20 +43,21 @@
                       {{ option.branch }}
                     </option>
                   </select>
-
-                </form>
+                     
+                  </form>
+                </div>
               </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
+          </div>          
+        </div>
+        <div class="col-lg-3">  </div>
+      </div>
+      <div>
+        <div class="row mt-5">
+          <div class="col-lg-2">  </div>        
+          <div class="col-lg-8 bank-lists">
+            <h2 class="mb-5 text-center">Branch Detail for Branch {{ this.selectedBranch }} city {{ this.selectedCity }} district {{ this.selectedDistrict }}   {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2> 
 
-          <div class="container">
-            <div class="about-heading">
-               <h2>Branch Detail for Branch {{ this.selectedBranch }} city {{ this.selectedCity }} district {{ this.selectedDistrict }}   {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2>
-            </div>
-            
-             <div class="col-md-8 col-md-offset-2">
-              <table class="table table-hover">
+            <table class="table table-hover">
                  
                   <tbody>
                     <tr>
@@ -95,11 +103,17 @@
                    
                   </tbody>
                 </table>
-            <div class="clearfix"></div>
-            </div>
+
           </div>
-    
-      </section> 
+          <div class="col-lg-2">  </div>    
+          
+
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
     </div>
 </template>
 
@@ -173,7 +187,6 @@
             .then(response => {
               this.branchOptions = response.data
                 let selectedBranch = this.selectedBranch
-                alert(selectedBranch);
                this.branchDetail =  this.branchOptions.filter(function(branch) {
                 return branch.slug == selectedBranch;
               });
