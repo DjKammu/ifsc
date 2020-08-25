@@ -18,6 +18,7 @@ import StateComponent from './components/StateComponent.vue';
 import HomeComponent from './components/HomeComponent.vue';
 import BankComponent from './components/BankComponent.vue';
 import CityComponent from './components/CityComponent.vue';
+import IFSCComponent from './components/IFSCComponent.vue';
 
 
 const routes = [
@@ -30,6 +31,11 @@ const routes = [
       path: '/home',
       name: 'Home',
       component: HomeComponent
+    },
+    {
+        name: 'ifsc',
+        path: '/ifsc/:ifsc?',
+        component: IFSCComponent
     },
     {
         name: 'bank',

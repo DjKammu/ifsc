@@ -36,6 +36,7 @@
 </template>
 
 <script>
+   
 export default {
   name: 'Navigation',
   data() {
@@ -59,7 +60,7 @@ export default {
         {
           id: 4,
           text: 'Search By IFSC Code',
-          page:'/'
+          page:'/ifsc'
         }
       ]
     }

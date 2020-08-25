@@ -197,6 +197,19 @@ h1, h2, h3, h4, h5, h6
     color: #6b6b6b;
 }
 
+.search_form input{
+  position: relative;
+    width: 100%;
+    cursor: pointer;
+    padding: 20px;
+    background: #FFFFFF;
+    margin: 10px 0px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6b6b6b;
+    border-right: solid 2px #d1d1d1;
+}
+
 .search_form option{
   width:150px;
     background: #FFFFFF;
