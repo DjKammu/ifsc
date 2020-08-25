@@ -27,4 +27,5 @@ Route::get('states', 'StateController@get');
 Route::get('districts', 'DistrictController@get');
 Route::get('cities', 'CityController@get');
 Route::get('branches', 'BranchController@get');
+Route::get('ifsc', 'BranchController@getFormIFSC');
 Route::get('metas', 'MetaController@get');

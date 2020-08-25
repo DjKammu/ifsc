@@ -26,5 +26,15 @@ class BranchController extends Controller
         ->with('bank')->orderBy('branch')->get();
 
         return response()->json($branches);
+    } 
+
+    public function getFormIFSC(Request $request)
+    {
+        $ifsc = $request->get('ifsc');
+
+        $branch = Branch::whereIfscCode($ifsc)
+        ->with('bank')->first();
+
+        return response()->json($branch);
     }
 }
