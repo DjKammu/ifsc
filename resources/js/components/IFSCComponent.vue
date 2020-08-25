@@ -24,9 +24,9 @@
       </div>
       <div>
         <div class="row mt-5">
-          <div class="col-lg-2">  </div>        
-          <div class="col-lg-8 bank-lists" v-if="ifscDetail">
-            <h2 class="mb-5 text-center">Bank Details of {{ this.selectedIFSC }}</h2> 
+          <div class="col-lg-2">  </div>    
+          <div class="col-lg-8 bank-lists" v-if="ifscDetail['ifsc_code']">
+            <h2 class="mb-5 text-center">Bank Details of {{ ifscDetail['ifsc_code'] }}</h2> 
 
             <table class="table table-hover">
                  
@@ -76,6 +76,7 @@
                 </table>
 
           </div>
+
           <div class="col-lg-2">  </div>    
           
 
@@ -141,8 +142,9 @@
         },fetchIFSC(){
             this.$http.get(BaseUrl+`/api/ifsc/?ifsc=`+this.selectedIFSC)
             .then(response => {
+                if(response.data){
                 this.ifscDetail = response.data
-                console.log(this.ifscDetail)
+                }
             })
             .catch(e => {
               this.errors.push(e)
