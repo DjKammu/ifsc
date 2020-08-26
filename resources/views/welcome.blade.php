@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('title') }}</title>
         <link href="{{ url(env('ASSET_URL','').'css/bars.css') }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="{{ url(env('ASSET_URL','').'css/bootstrap.min.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ url(env('ASSET_URL','').'css/style.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ url(env('ASSET_URL','').'css/bootstrap.min.css?v=1') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ url(env('ASSET_URL','').'css/style.css?v=1') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ url(env('ASSET_URL','').'css/font-awesome.css') }}" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
