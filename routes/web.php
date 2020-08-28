@@ -27,6 +27,13 @@ Route::get('/storage', function () {
     echo $exitCode;
 });
 
+ Route::get('/clear-cache', function() {
+    $run = Artisan::call('config:clear');
+    $run = Artisan::call('cache:clear');
+    $run = Artisan::call('config:cache');
+    return 'CLEARED';  
+});
+
 /*SITE MAP */
 Route::get('/sitemap/index.xml', 'SitemapController@index');
 Route::get('/sitemap/pages.xml', 'SitemapController@pages');
