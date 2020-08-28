@@ -31,7 +31,9 @@ Route::get('/storage', function () {
     $run = Artisan::call('config:clear');
     $run = Artisan::call('cache:clear');
     $run = Artisan::call('config:cache');
-    $run = Artisan::call('serve');
+    $run = Artisan::call('config:cache');
+    $run = Artisan::call('route:cache');
+    $run = Artisan::call('optimize');
     return 'CLEARED';  
 });
 
