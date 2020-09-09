@@ -31,8 +31,8 @@ class LocationController extends AdminController
         $grid->column('count', __('Count'));
         $grid->column('ip', __('Ip'));
         $grid->column('location_data', __('Location data'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
