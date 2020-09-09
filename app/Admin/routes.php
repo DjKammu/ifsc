@@ -20,7 +20,8 @@ Route::group([
     $router->get('/district/cities','DistrictController@cities');
     $router->resource('branches', BranchController::class);
     $router->resource('keywords', KeywordController::class);
-    
+    $router->resource('locations', LocationController::class);
+
     $router->get('import/branches', 'BranchController@getImport')->name('branches.import');
     $router->post('import/branches', 'BranchController@postImport')->name('post.branches.import');   
 });
