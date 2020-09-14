@@ -3,17 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('title') }}</title>
+        
+        {!! \App\Helpers\GetIFSC::getSEOTags() !!}
         <link href="{{ url(env('ASSET_URL','public/').'css/bars.css') }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{ url(env('ASSET_URL','public/').'css/bootstrap.min.css?v=1') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ url(env('ASSET_URL','public/').'css/style.css?v=1') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ url(env('ASSET_URL','public/').'css/font-awesome.css') }}" />
 
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link href="{{ url(env('ASSET_URL','public/').'css/app.css') }}" type="text/css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" 
+        type="text/css">
+        <link href="{{ url(env('ASSET_URL','public/').'css/app.css') }}" type="text/css" 
+        rel="stylesheet" />
+
         <meta name="csrf-token" value="{{ csrf_token() }}" />
-        <meta name="description" content="{{ config('description') }}"/>
-        <meta name="keywords" content="{{ config('keywords') }}"/>
         
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url(env('ASSET_URL','public/').'favicon/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url(env('ASSET_URL','public/').'favicon/favicon-32x32.png') }}">
