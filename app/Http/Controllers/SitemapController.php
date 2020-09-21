@@ -8,6 +8,8 @@ use App\Branch;
 
 class SitemapController extends Controller
 {
+    CONST SITEMAP_LIMIT = 30000;
+
     public function index()
 	{
 	   return response()->view('sitemap.index')->header('Content-Type', 'text/xml');
@@ -52,8 +54,8 @@ class SitemapController extends Controller
 		          ->whereNotNull('district')
 		          ->whereNotNull('city')
                   ->with('bank')->groupBy(['city','district','state','bank_id'])
-                  ->get();        
-                               
+                  ->limit(self::SITEMAP_LIMIT)->get();        
+
 		return response()->view('sitemap.cities', ['cities' => $cities])
 		      ->header('Content-Type', 'text/xml');
 
