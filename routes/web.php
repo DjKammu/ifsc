@@ -40,6 +40,8 @@ Route::get('/sitemap/index.xml', 'SitemapController@index');
 Route::get('/sitemap/pages.xml', 'SitemapController@pages');
 Route::get('/sitemap/banks.xml', 'SitemapController@banks');
 Route::get('/sitemap/states.xml', 'SitemapController@states');
+Route::get('/sitemap/districts.xml', 'SitemapController@districts');
+Route::get('/sitemap/cities.xml', 'SitemapController@cities');
 
 
 Route::get('/{any}', function(){

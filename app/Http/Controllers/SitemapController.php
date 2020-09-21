@@ -33,6 +33,32 @@ class SitemapController extends Controller
 
 	}
 
+	public function districts()
+	{
+		$districts =  Branch::orderBy('district')
+		          ->whereNotNull('state')
+		          ->whereNotNull('district')
+                  ->with('bank')->groupBy(['district','state','bank_id'])
+                  ->get();                        
+		return response()->view('sitemap.districts', ['districts' => $districts])
+		      ->header('Content-Type', 'text/xml');
+
+	}
+
+	public function cities()
+	{
+		$cities =  Branch::orderBy('city')
+		          ->whereNotNull('state')
+		          ->whereNotNull('district')
+		          ->whereNotNull('city')
+                  ->with('bank')->groupBy(['city','district','state','bank_id'])
+                  ->get();        
+                               
+		return response()->view('sitemap.cities', ['cities' => $cities])
+		      ->header('Content-Type', 'text/xml');
+
+	}
+
 	public function pages(){
 		return response()->view('sitemap.pages')->header('Content-Type', 'text/xml');
 	}
