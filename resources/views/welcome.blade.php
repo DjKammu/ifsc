@@ -35,7 +35,22 @@
           gtag('config', 'UA-132785386-2');
         </script>
 
-       <script data-ad-client="ca-pub-4798907862893964" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+       <!-- <script data-ad-client="ca-pub-4798907862893964" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+
+       <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "get bank ifsc",
+          "url": "https://getbankifsc.co.in/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+
 
     </head>
     <body>
