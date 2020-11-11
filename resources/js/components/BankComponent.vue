@@ -45,7 +45,7 @@
           <div class="col-lg-8 bank-lists">
             <h2 class="mb-5 text-center">States for {{ this.selectedBank }}</h2> 
             <ul class="banks-ul">
-              <li class="text-md-left text-center mt-2 mb-2" v-for="option in stateOptions">
+              <li class="text-md-left mt-2 mb-2" v-for="option in stateOptions">
                     <router-link 
                   :to="{ name: 'state', params: { bank : selectedBank , state: option.slug }}"> {{ option.name }}
                 </router-link>

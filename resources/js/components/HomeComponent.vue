@@ -41,7 +41,7 @@
           <div class="col-lg-8 bank-lists">
             <h2 class="mb-5 text-center">All Banks</h2> 
             <ul class="banks-ul">
-              <li class="text-md-left text-center mt-2 mb-2" 
+              <li class="text-md-left mt-2 mb-2" 
               v-for="option in bankOptions">
                     <router-link 
                   :to="{ name: 'bank', params: { bank: option.slug }}"> {{ option.name }}

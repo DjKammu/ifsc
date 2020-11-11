@@ -52,7 +52,7 @@
           <div class="col-lg-8 bank-lists">
             <h2 class="mb-5 text-center">Cities for district {{ this.selectedDistrict }}   {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2> 
             <ul class="banks-ul">
-              <li class="text-md-left text-center mt-2 mb-2" v-for="option in cityOptions">
+              <li class="text-md-left mt-2 mb-2" v-for="option in cityOptions">
                 <router-link 
                   :to="{ name: 'city', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: option.slug }}"> {{ option.name }}
                 </router-link>
