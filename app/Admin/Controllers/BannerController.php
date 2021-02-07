@@ -68,7 +68,7 @@ class BannerController extends AdminController
 
         $banks = Bank::pluck('name','id');
 
-       $form->multipleSelect('banks', __('Banks'))->options($banks)->rules('required');
+       $form->multipleSelect('banks', __('Banks'))->options($banks);
 
         $form->image('image', __('Image'));
 
