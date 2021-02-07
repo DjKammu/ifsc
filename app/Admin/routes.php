@@ -21,6 +21,7 @@ Route::group([
     $router->resource('branches', BranchController::class);
     $router->resource('keywords', KeywordController::class);
     $router->resource('locations', LocationController::class);
+    $router->resource('banners', BannerController::class);
 
     $router->get('import/branches', 'BranchController@getImport')->name('branches.import');
     $router->post('import/branches', 'BranchController@postImport')->name('post.branches.import');   
