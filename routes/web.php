@@ -28,9 +28,9 @@ Route::get('/storage', function () {
 });
 
  Route::get('/clear-cache', function() {
-    $run = Artisan::call('config:clear');
+    // $run = Artisan::call('config:clear');
     $run = Artisan::call('cache:clear');
-    $run = Artisan::call('config:cache');
+    // $run = Artisan::call('config:cache');
     // $run = Artisan::call('optimize');
     return 'CLEARED';  
 });
