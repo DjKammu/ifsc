@@ -18,10 +18,10 @@ return [
     ],
 
     'facebook' => [
-        'app_id' => '',
-        'app_secret' => '',
-        'default_graph_version' => '',
-        'page_access_token' => ''
+        'app_id' => env('FACEBOOK_API_ID', ''),
+        'app_secret' => env('FACEBOOK_API_SECRET', ''),
+        'default_graph_version' => env('FACEBOOK_GRAPH_VERSION', ''),
+        'page_access_token' => env('FACEBOOK_PAGE_ACCESS_TOKEN', '')
     ],
 
     // Set Proxy for Servers that can not Access Social Networks due to Sanctions or ...

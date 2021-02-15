@@ -32,7 +32,7 @@ class CronController extends Controller
         $branch->image = $image;
 
         $this->shareOnTelegram($branch);
-        // $this->shareOnFacebook($lyrichord);
+        $this->shareOnFacebook($branch);
         // $this->shareOnWhatsapp($lyrichord);
 
     }
@@ -42,6 +42,7 @@ class CronController extends Controller
 
         $text = $branch['bank']['name'].', '.$branch['branch'].' '.url($branch['bank']['slug'].'/'.$branch['state_slug'].'/'.$branch['district_slug'].'/'.$branch['city_slug'].'/'.$branch['slug']);
         $file = $branch['image'];
+       
         
         if (\App::environment('production', 'staging')) {
 
@@ -59,10 +60,10 @@ class CronController extends Controller
         return ;
     } 
 
-    public function shareOnFacebook($lyrichord){
+    public function shareOnFacebook($branch){
 
-         $text = $lyrichord['title'].' '.url($lyrichord['slug']);
-         $file = $lyrichord['image'];
+         $text = $branch['bank']['name'].', '.$branch['branch'].' '.url($branch['bank']['slug'].'/'.$branch['state_slug'].'/'.$branch['district_slug'].'/'.$branch['city_slug'].'/'.$branch['slug']);
+        $file = $branch['image'];
 
         if (\App::environment('production', 'staging')) {
               SendTo::Facebook(
@@ -72,7 +73,7 @@ class CronController extends Controller
                   'message' => $text
               ]
           );
-       }
+      }
         return ;
     }
 
