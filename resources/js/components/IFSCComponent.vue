@@ -140,7 +140,7 @@
               this.errors.push(e)
             })
         },fetchIFSC(){
-            this.$http.get(BaseUrl+`/api/ifsc/?ifsc=`+this.selectedIFSC)
+            this.$http.get(BaseUrl+`/api/ifsc?ifsc=`+this.selectedIFSC)
             .then(response => {
                 if(response.data){
                 this.ifscDetail = response.data

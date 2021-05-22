@@ -158,7 +158,7 @@
               this.errors.push(e)
             })
         },fetchStates(){
-            this.$http.get(BaseUrl+`/api/states/?bank=`+this.selectedBank)
+            this.$http.get(BaseUrl+`/api/states?bank=`+this.selectedBank)
             .then(response => {
               this.stateOptions = response.data
             })
@@ -166,7 +166,7 @@
               this.errors.push(e)
             })
         },fetchDistricts(){
-            this.$http.get(BaseUrl+`/api/districts/?bank=`+this.selectedBank+`&state=`+this.selectedState)
+            this.$http.get(BaseUrl+`/api/districts?bank=`+this.selectedBank+`&state=`+this.selectedState)
             .then(response => {
               this.districtOptions = response.data
             })
@@ -174,7 +174,7 @@
               this.errors.push(e)
             })
         },fetchCities(){
-            this.$http.get(BaseUrl+`/api/cities/?bank=`+this.selectedBank+`&state=`+this.selectedState+`&district=`+this.selectedDistrict+`&district=`+this.selectedDistrict)
+            this.$http.get(BaseUrl+`/api/cities?bank=`+this.selectedBank+`&state=`+this.selectedState+`&district=`+this.selectedDistrict+`&district=`+this.selectedDistrict)
             .then(response => {
               this.cityOptions = response.data
             })
@@ -182,7 +182,7 @@
               this.errors.push(e)
             })
         },fetchBranches(){
-            this.$http.get(BaseUrl+`/api/branches/?bank=`+this.selectedBank+`&state=`+this.selectedState+`&district=`+this.selectedDistrict+`&city=`+this.selectedCity)
+            this.$http.get(BaseUrl+`/api/branches?bank=`+this.selectedBank+`&state=`+this.selectedState+`&district=`+this.selectedDistrict+`&city=`+this.selectedCity)
             .then(response => {
               this.branchOptions = response.data
                 let selectedBranch = this.selectedBranch
