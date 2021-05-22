@@ -98,6 +98,7 @@
               this.errors.push(e)
             })
         },fetchStates(){
+          
             this.$http.get(BaseUrl+`/api/states?bank=`+this.selectedBank)
             .then(response => {
               this.stateOptions = response.data
