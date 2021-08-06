@@ -97,7 +97,7 @@
                     <tr>
                       <th scope="row">State</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'state', params: { bank : selectedBank , state: selectedState }}">{{ this.branchDetail[0]['state'] }}</router-link>
+                      <router-link :to="{ name: 'state', params: { bank : this.selectedBank , state: this.selectedState }}">{{ this.branchDetail[0]['state'] }}</router-link>
                     </td>
                     </tr> 
                     <tr>
@@ -114,7 +114,7 @@
                     <tr>
                       <th scope="row">Branch</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['branch'] }}</router-link></td>
+                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['branch'] }}</router-link></td>
                     </tr>
                     <tr>
                       <th scope="row">IFSC Code</th>
@@ -124,24 +124,24 @@
                     <tr>
                       <th scope="row">Address</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['address'] }}</router-link></td>
+                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['address'] }}</router-link></td>
                     </tr>
                     <tr>
                       <th scope="row">Phone Number</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['phone'] }}</router-link>
+                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['phone'] }}</router-link>
                     </td>
                     </tr>
                     <tr>
                       <th scope="row">STD Code</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['std_code'] }}</router-link>
+                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['std_code'] }}</router-link>
                     </td>
                     </tr>
                     <tr>
                       <th scope="row">MICR Code</th>
                       <th scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['micr_code'] }}</router-link>
+                      <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['micr_code'] }}</router-link>
                     </th>
                     </tr>
                    
