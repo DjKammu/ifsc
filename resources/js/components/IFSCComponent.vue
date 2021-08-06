@@ -26,52 +26,106 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>    
           <div class="col-lg-8 bank-lists" v-if="ifscDetail['ifsc_code']">
-            <h2 class="mb-5 text-center">Bank Details of {{ ifscDetail['ifsc_code'] }}</h2> 
+
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"> 
+                <router-link to="/">Bank</router-link>
+                &#10151;
+                <router-link :to="{ name: 'bank', params: { bank: this.ifscDetail['bank']['slug'] }}">{{ this.ifscDetail['bank']['name'].replace('-', ' ')}}</router-link>
+               </li>
+              <li class="breadcrumb-item" aria-current="page">
+               State &#10151;
+                <router-link :to="{ name: 'state', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] }}">{{ this.ifscDetail['state'].replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               District &#10151;
+                <router-link :to="{ name: 'district', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'], district: this.ifscDetail['district'] }}">{{ this.ifscDetail['district'].replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               City &#10151;
+                <router-link :to="{ name: 'city', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'], district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] }}">{{ this.ifscDetail['city'].replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               Branch &#10151;
+                <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'], district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['branch'].replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               IFSC Code &#10151;
+                <router-link :to="{ name: 'ifsc', params: { ifsc: this.ifscDetail['ifsc_code'] }}">{{ this.ifscDetail['ifsc_code'].replace('-', ' ')}}</router-link>
+              </li>
+            <li class="breadcrumb-item active" aria-current="page">
+            Details
+            </li>
+            </ol>
+
+            <!-- <h2 class="mb-5 text-center">Bank Details of {{ ifscDetail['ifsc_code'] }}</h2>  -->
 
             <table class="table table-hover">
-                 
+
                   <tbody>
+
                     <tr>
-                      <th scope="row">Bank</th>
-                      <td scope="col" v-if="ifscDetail['bank']">{{ this.ifscDetail['bank']['name'] }}</td>
-                    </tr> 
+                          <th scope="row">Bank</th>
+                          <td scope="col" v-if="ifscDetail['bank']">
+                            <router-link :to="{ name: 'bank', params: { bank: this.ifscDetail['bank']['slug'] }}">{{ this.ifscDetail['bank']['name'] }}</router-link>
+                          </td>
+                        </tr> 
+                      
+                      <tr>
+                        <th scope="row">State</th>
+                        <td scope="col" v-if="ifscDetail['state']">
+                        <router-link :to="{ name: 'state', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug']  }}">{{ this.ifscDetail['state'] }}</router-link>
+                      </td>
+                      </tr> 
+
+                     <tr>
+                          <th scope="row">District</th>
+                          <td scope="col" v-if="ifscDetail['district']">
+                            <router-link :to="{ name: 'district', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] }}">{{ this.ifscDetail['district'] }}</router-link>
+                          </td>
+                        </tr>
+
                     <tr>
-                      <th scope="row">State</th>
-                      <td scope="col" v-if="ifscDetail['state']">{{ this.ifscDetail['state'] }}</td>
-                    </tr> 
-                    <tr>
-                      <th scope="row">District</th>
-                      <td scope="col" v-if="ifscDetail['district']">{{ this.ifscDetail['district'] }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">City</th>
-                      <td scope="col" v-if="ifscDetail['city']">{{ this.ifscDetail['city'] }}</td>
-                    </tr> 
-                    <tr>
-                      <th scope="row">Branch</th>
-                      <td scope="col" v-if="ifscDetail['branch']">{{ this.ifscDetail['branch'] }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">IFSC Code</th>
-                      <th scope="col" v-if="ifscDetail['ifsc_code']">{{ this.ifscDetail['ifsc_code'] }}</th>
-                    </tr>
-                    <tr>
-                      <th scope="row">Address</th>
-                      <td scope="col" v-if="ifscDetail['address']">{{ this.ifscDetail['address'] }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Phone Number</th>
-                      <td scope="col" v-if="ifscDetail['phone']">{{ this.ifscDetail['phone'] }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">STD Code</th>
-                      <td scope="col" v-if="ifscDetail['std_code']">{{ this.ifscDetail['std_code'] }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">MICR Code</th>
-                      <th scope="col" v-if="ifscDetail['micr_code']">{{ this.ifscDetail['micr_code'] }}</th>
-                    </tr>
-                   
+                          <th scope="row">City</th>
+                          <td scope="col" v-if="ifscDetail['branch']">
+                          <router-link :to="{ name: 'city', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] }}">{{ this.ifscDetail['city'] }}</router-link></td>
+                        </tr> 
+                        <tr>
+                          <th scope="row">Branch</th>
+                          <td scope="col" v-if="ifscDetail['branch']">
+                          <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['branch'] }}</router-link></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">IFSC Code</th>
+                          <th scope="col" v-if="ifscDetail['ifsc_code']">
+                          <router-link :to="{ name: 'ifsc', params: { ifsc: this.ifscDetail['ifsc_code'] }}">{{ this.ifscDetail['ifsc_code'] }}</router-link></th>
+                        </tr>
+                        <tr>
+                          <th scope="row">Address</th>
+                          <td scope="col" v-if="ifscDetail['address']">
+                          <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['address'] }}</router-link></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Phone Number</th>
+                          <td scope="col" v-if="ifscDetail['phone']">
+                          <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['phone'] }}</router-link>
+                        </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">STD Code</th>
+                          <td scope="col" v-if="ifscDetail['std_code']">
+                          <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['std_code'] }}</router-link>
+                        </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">MICR Code</th>
+                          <th scope="col" v-if="ifscDetail['micr_code']">
+                          <router-link :to="{ name: 'branch', params: { bank : this.ifscDetail['bank']['slug'] , state: this.ifscDetail['state_slug'] , district: this.ifscDetail['district_slug'] , city: this.ifscDetail['city_slug'] , branch: this.ifscDetail['slug'] }}">{{ this.ifscDetail['micr_code'] }}</router-link>
+                        </th>
+                        </tr>
+
+                    
                   </tbody>
                 </table>
 
@@ -85,7 +139,14 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>        
           <div class="col-lg-8 bank-lists">
-            <h2 class="mb-5 text-center">All Banks</h2> 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"> 
+                    <router-link to="/">Banks</router-link>
+                  </li>
+                </ol>
+              </nav>
+            <!-- <h2 class="mb-5 text-center">All Banks</h2>  -->
             <ul class="banks-ul">
               <li class="text-md-left mt-2 mb-2" 
               v-for="option in bankOptions">
