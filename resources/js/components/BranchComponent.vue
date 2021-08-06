@@ -97,7 +97,7 @@
                     <tr>
                       <th scope="row">State</th>
                       <td scope="col" v-if="branchDetail.length">
-                      <router-link :to="{ name: 'state', params: { bank : this.selectedBank , state: this.selectedState }}">{{ this.branchDetail[0]['state'] }}</router-link>
+                      <router-link :to="{ name: 'state', params: { bank : selectedBank , state: selectedState }}">{{ this.branchDetail[0]['state'] }}</router-link>
                     </td>
                     </tr> 
                     <tr>
