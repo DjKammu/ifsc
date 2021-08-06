@@ -127,7 +127,7 @@
                       <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['address'] }}</router-link></td>
                     </tr>
                     <tr>
-                      <th scope="row">Phone Number</th>
+                      <th scope="row">Phone + Number</th>
                       <td scope="col" v-if="branchDetail.length">
                       <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.branchDetail[0]['phone'] }}</router-link>
                     </td>
