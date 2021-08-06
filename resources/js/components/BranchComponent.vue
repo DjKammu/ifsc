@@ -55,50 +55,94 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>        
           <div class="col-lg-8 bank-lists">
-            <h2 class="mb-5 text-center">Branch Detail for Branch {{ this.selectedBranch }} city {{ this.selectedCity }} district {{ this.selectedDistrict }}   {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2> 
+
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"> 
+                <router-link to="/">Bank</router-link>
+                &#10151;
+                <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.selectedBank.replace('-', ' ')}}</router-link>
+               </li>
+              <li class="breadcrumb-item" aria-current="page">
+               State &#10151;
+                <router-link :to="{ name: 'state', params: { bank : selectedBank , state: selectedState }}">{{ this.selectedState.replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               District &#10151;
+                <router-link :to="{ name: 'district', params: { bank : selectedBank , state: selectedState, district: selectedDistrict }}">{{ this.selectedDistrict.replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               City &#10151;
+                <router-link :to="{ name: 'city', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity }}">{{ this.selectedCity.replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               Branch &#10151;
+                <router-link :to="{ name: 'branch', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , district: selectedDistrict , city: selectedCity , branch: selectedBranch }}">{{ this.selectedBranch.replace('-', ' ')}}</router-link>
+              </li>
+            <li class="breadcrumb-item active" aria-current="page">
+            Details
+            </li>
+            </ol>
+
+            <!-- <h2 class="mb-5 text-center">Branch Detail for Branch {{ this.selectedBranch }} city {{ this.selectedCity }} district {{ this.selectedDistrict }}   {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2>  -->
 
             <table class="table table-hover">
                  
                   <tbody>
                     <tr>
                       <th scope="row">Bank</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['bank']['name'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                        <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['bank']['name'] }}</router-link>
+                      </td>
                     </tr> 
                     <tr>
                       <th scope="row">State</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['state'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['state'] }}</router-link>
+                    </td>
                     </tr> 
                     <tr>
                       <th scope="row">District</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['district'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                        <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['district'] }}</router-link>
+                      </td>
                     </tr>
                     <tr>
                       <th scope="row">City</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['city'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['city'] }}</router-link></td>
                     </tr> 
                     <tr>
                       <th scope="row">Branch</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['branch'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['branch'] }}</router-link></td>
                     </tr>
                     <tr>
                       <th scope="row">IFSC Code</th>
-                      <th scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['ifsc_code'] }}</th>
+                      <th scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['ifsc_code'] }}</router-link></th>
                     </tr>
                     <tr>
                       <th scope="row">Address</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['address'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['address'] }}</router-link></td>
                     </tr>
                     <tr>
                       <th scope="row">Phone Number</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['phone'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['phone'] }}</router-link>
+                    </td>
                     </tr>
                     <tr>
                       <th scope="row">STD Code</th>
-                      <td scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['std_code'] }}</td>
+                      <td scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['std_code'] }}</router-link>
+                    </td>
                     </tr>
                     <tr>
                       <th scope="row">MICR Code</th>
-                      <th scope="col" v-if="branchDetail.length">{{ this.branchDetail[0]['micr_code'] }}</th>
+                      <th scope="col" v-if="branchDetail.length">
+                      <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.branchDetail[0]['micr_code'] }}</router-link>
+                    </th>
                     </tr>
                    
                   </tbody>

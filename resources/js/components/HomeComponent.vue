@@ -39,7 +39,17 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>        
           <div class="col-lg-8 bank-lists">
-            <h2 class="mb-5 text-center">All Banks</h2> 
+            <!-- <h2 class="mb-5 text-center">All Banks</h2>  -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" >
+                  <router-link 
+                  to="/"> All Banks
+                </router-link>
+              </li>
+              </ol>
+            </nav>
+
             <ul class="banks-ul">
               <li class="text-md-left mt-2 mb-2" 
               v-for="option in bankOptions">

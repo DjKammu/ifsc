@@ -53,7 +53,30 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>        
           <div class="col-lg-8 bank-lists">
-            <h2 class="mb-5 text-center">States for {{ this.selectedBank }}</h2> 
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"> 
+                <router-link to="/">Bank</router-link>
+                &#10151;
+                <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.selectedBank.replace('-', ' ')}}</router-link>
+               </li>
+              <li class="breadcrumb-item" aria-current="page">
+               State &#10151;
+                <router-link :to="{ name: 'state', params: { bank : selectedBank , state: selectedState }}">{{ this.selectedState.replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               District &#10151;
+                <router-link :to="{ name: 'district', params: { bank : selectedBank , state: selectedState, district: selectedDistrict }}">{{ this.selectedDistrict.replace('-', ' ')}}</router-link>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+               City &#10151;
+                <router-link :to="{ name: 'city', params: { bank : selectedBank , state: selectedState, district: selectedDistrict , city: selectedCity }}">{{ this.selectedCity.replace('-', ' ')}}</router-link>
+              </li>
+            <li class="breadcrumb-item active" aria-current="page">
+            Branches
+            </li>
+            </ol>
+
+            <!-- <h2 class="mb-5 text-center">States for {{ this.selectedBank }}</h2>  -->
             <ul class="banks-ul">
               <li class="text-md-left mt-2 mb-2" v-for="option in branchOptions">
                 <router-link 

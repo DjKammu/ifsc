@@ -48,7 +48,23 @@
         <div class="row mt-5">
           <div class="col-lg-2">  </div>        
           <div class="col-lg-8 bank-lists">
-            <h2 class="mb-5 text-center">District for {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2> 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"> 
+                    <router-link to="/">Bank</router-link>
+                    &#10151;
+                    <router-link :to="{ name: 'bank', params: { bank: this.selectedBank }}">{{ this.selectedBank.replace('-', ' ')}}</router-link>
+                   </li>
+                  <li class="breadcrumb-item" aria-current="page">
+                   State &#10151;
+                    <router-link :to="{ name: 'state', params: { bank : selectedBank , state: selectedState }}">{{ this.selectedState.replace('-', ' ')}}</router-link>
+                  </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                Districts
+                </li>
+                </ol>
+              </nav>
+            <!-- <h2 class="mb-5 text-center">District for {{ this.selectedState }} state having bank {{ this.selectedBank }}</h2>  -->
             <ul class="banks-ul">
               <li class="text-md-left mt-2 mb-2" v-for="option in districtOptions">
                 <router-link 

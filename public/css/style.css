@@ -240,3 +240,16 @@ h1, h2, h3, h4, h5, h6
   margin-bottom: 0;
   color: #fff;
 }
+.breadcrumb {
+    background-color: transparent;
+    border: 1px solid #3aa5dc;
+}
+
+.breadcrumb-item.active {
+    color: #3aa5dc;
+    font-weight: 500;
+}
+
+table.table.table-hover a{
+  color:#ada5a5;
+}
